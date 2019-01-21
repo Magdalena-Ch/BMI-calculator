@@ -3,19 +3,25 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <label for="weight">WEIGHT</label>
-    <input id="weight" [(ngModel)]="weight" />
-    <label for="height">HEIGHT</label>
-    <input id="height" [(ngModel)]="height" />
+    <mat-form-field>
+      <input type="number" matInput placeholder="Weight" [(ngModel)]="weight" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="number" matInput placeholder="Height" [(ngModel)]="height" />
+    </mat-form-field>
 
     <div *ngIf="canCalculateBMI(); else tpl">{{ bmi() }}</div>
     <ng-template #tpl>Please enter data</ng-template>
   `,
   styles: [
     `
-      input {
+      :host {
         display: block;
-        margin-bottom: 16px;
+        padding: 16px;
+      }
+      mat-form-field {
+        display: block;
       }
     `
   ]
